@@ -13,10 +13,7 @@ export default function Home() {
         <p className="description">Your favorite cooking partner.</p>
         <h1>Tell us what’s in your fridge, <br/>we’ll tell you what to cook!</h1>
 
-        <IngredientInput />        
-        
-        <div className="flex gap-4 items-center">
-        </div>
+        <IngredientInput/>        
 
         <button className="btn-primary">Get recipes</button>
       </main>

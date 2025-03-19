@@ -51,6 +51,13 @@ const IngredientInput = () => {
           ))}
         </ul>
       )}
+      <div>
+        {currentIngredients.map((item) => (
+          <div key={item.id} className='ingredient-box'>
+            <p>{item.name}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
