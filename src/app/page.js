@@ -16,10 +16,10 @@ export default function Home() {
         
         <p className="description text-center">Your favorite cooking partner.</p>
         <h1 className="text-center mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
-          Tell us what’s in your fridge, <br />we’ll tell you what to cook!
+          {showRecipes? <>{recipes.length} Found recipes</>:<>Tell us what’s in your fridge, <br/> we’ll tell you what to cook!</>}
         </h1>
         
-        {showRecipes ? <RecipesGallery recipes={recipes} /> : <IngredientInput setShowRecipes={setShowRecipes} setRecipes={setRecipes}/>}
+        {showRecipes ? <RecipesGallery recipes={recipes} setShowRecipes={setShowRecipes} /> : <IngredientInput setShowRecipes={setShowRecipes} setRecipes={setRecipes}/>}
       </main>
     </div>
   );
