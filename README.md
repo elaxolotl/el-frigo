@@ -1,8 +1,42 @@
+# El Frigo
+
+![El Frigo Logo](./public/ElFrigo.svg)
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+## Project Overview
+
+El Frigo helps you find recipes based on the ingredients you have in your fridge. Simply input your ingredients, and El Frigo will suggest recipes you can make.
+
+## Technologies Used
+
+- Next.js
+- React
+- Tailwind CSS
+- Spoonacular API
 
 ## Getting Started
 
-First, run the development server:
+First, clone the repository:
+
+```bash
+git clone https://github.com/your-username/el-frigo.git
+cd el-frigo
+```
+
+Then, install the dependencies:
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+## Running the Development Server
+
+To start the development server, run:
 
 ```bash
 npm run dev
@@ -16,21 +50,17 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Usage
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Open the application in your browser.
+2. Enter the ingredients you have in the input field.
+3. Select ingredients from the suggestions.
+4. Click on "Get recipes" to see the recipes you can make with the selected ingredients.
 
-## Learn More
+## Contributing
 
-To learn more about Next.js, take a look at the following resources:
+Contributions are welcome! Please open an issue or submit a pull request.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License.
