@@ -1,6 +1,11 @@
+"use client";
+import { useState } from "react";
 import Image from "next/image";
 import IngredientInput from './ingredientInput';
+import RecipesGallery from "./recipes";
 export default function Home() {
+  const [showRecipes, setShowRecipes] = useState(false);
+  const [recipes, setRecipes] = useState([]);
   return (
     <div className="grid place-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-[32px] items-center h-full justify-center">
@@ -14,7 +19,7 @@ export default function Home() {
           Tell us what’s in your fridge, <br />we’ll tell you what to cook!
         </h1>
         
-        <IngredientInput/>
+        {showRecipes ? <RecipesGallery recipes={recipes} /> : <IngredientInput setShowRecipes={setShowRecipes} setRecipes={setRecipes}/>}
       </main>
     </div>
   );

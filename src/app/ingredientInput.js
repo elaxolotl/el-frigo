@@ -1,12 +1,13 @@
 "use client";
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 let apiKey = "d504274fe0c64388b3ad538dd11bb038";
-const IngredientInput = () => {
+const IngredientInput = ({ setShowRecipes, setRecipes }) => {
   const [ingredient, setIngredient] = useState(''); 
   const [suggestions, setSuggestions] = useState([]);
   const [ingredients, setIngredients] = useState([]);
-
+  const router = useRouter();
   const fetchSuggestions = async (query) => {
     if (query.length > 1) {
       const response = await fetch(`https://api.spoonacular.com/food/ingredients/search?query=${ingredient}&apiKey=${apiKey}`);
@@ -33,6 +34,14 @@ const IngredientInput = () => {
     setIngredients(updatedIngredients);
   };
 
+  const fetchRecipes = async () => {
+    const response = await fetch(`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${ingredients.map(item => item.name).join(',+')}&apiKey=${apiKey}`);
+    const data = await response.json();
+    if (data) {
+        setRecipes(data)
+        setShowRecipes(true);
+    }
+}
   return (
     <div>
       <input 
@@ -68,7 +77,9 @@ const IngredientInput = () => {
         ))}
       </div>
 
-        <button type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        <button type="button"
+        className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        onClick={() => {fetchRecipes()}}>
             Get recipes
             <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
