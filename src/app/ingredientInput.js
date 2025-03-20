@@ -2,10 +2,10 @@
 
 import { useState } from 'react';
 let apiKey = "d504274fe0c64388b3ad538dd11bb038";
-let currentIngredients = [];
 const IngredientInput = () => {
   const [ingredient, setIngredient] = useState(''); 
-  const [suggestions, setSuggestions] = useState([]); 
+  const [suggestions, setSuggestions] = useState([]);
+  const [ingredients, setIngredients] = useState([]);
 
   const fetchSuggestions = async (query) => {
     if (query.length > 1) {
@@ -28,6 +28,11 @@ const IngredientInput = () => {
     fetchSuggestions(value);
   };
 
+  const handleRemoveIngredient = (id) => {
+    const updatedIngredients = ingredients.filter(item => item.id !== id);
+    setIngredients(updatedIngredients);
+  };
+
   return (
     <div>
       <input 
@@ -43,7 +48,7 @@ const IngredientInput = () => {
         <ul>
           {suggestions.map((item) => (
             <li key={item.id} className='suggestion-box' onClick={() => {
-                currentIngredients.push(item);
+                ingredients.push(item);
                 setIngredient('');
                 setSuggestions([]);
             }}>
@@ -53,9 +58,12 @@ const IngredientInput = () => {
         </ul>
       )}
       <div className='ingredient-box'>
-        {currentIngredients.map((item) => (
+        {ingredients.map((item) => (
           <div key={item.id}>
-            <div className="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-blue-900 dark:text-blue-300">{item.name}</div>
+            <div className="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-blue-900 dark:text-blue-300">
+                {item.name}
+                <button onClick={() => handleRemoveIngredient(item.id)}>⨯</button>
+            </div>
           </div>
         ))}
       </div>
